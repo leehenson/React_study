@@ -1,3 +1,5 @@
+import CreateDay from './component/CreateDay';
+import CreateWord from './component/CreateWord';
 import Day from './component/Day';
 import DayList from './component/DayList';
 import EmptyPage from './component/EmptyPage';
@@ -15,6 +17,12 @@ function App() {
           </Route>
           <Route path="/day/:day">
             <Day />
+          </Route>
+          <Route path="/create_word">
+            <CreateWord />
+          </Route>
+          <Route path="/create_day">
+            <CreateDay />
           </Route>
           <Route>
             <EmptyPage />
