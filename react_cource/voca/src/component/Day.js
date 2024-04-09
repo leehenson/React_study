@@ -5,9 +5,7 @@ import useFetch from '../hooks/useFetch';
 export default function Day() {
   const { day } = useParams();
   const history = useHistory();
-  const { data: days, loading: daysLoading } = useFetch(
-    `http://localhost:3001/days`
-  );
+  const { data: days } = useFetch(`http://localhost:3001/days`);
   const { data: words, loading: wordsLoading } = useFetch(
     `http://localhost:3001/words?day=${day}`
   );
@@ -31,11 +29,30 @@ export default function Day() {
     }
   }
 
+  if (wordsLoading) {
+    return (
+      <>
+        <h2>Day {day}</h2>
+        <span>Loading...</span>
+      </>
+    );
+  } else if (!wordsLoading && words.length === 0) {
+    return (
+      <>
+        <h2>Day {day}</h2>
+        <span>데이터가 없습니다.</span>
+        <div className="buttons">
+          <button onClick={prev}>{'<'}</button>
+          <button onClick={next}>{'>'}</button>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <h2>Day {day}</h2>
-      {daysLoading && <span>Loading...</span>}
-      {!wordsLoading && words.length === 0 && <span>데이터가 없습니다.</span>}
+
       <table>
         <tbody>
           {words.map((word) => (
