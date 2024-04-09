@@ -2,6 +2,7 @@ import CreateDay from './component/CreateDay';
 import CreateWord from './component/CreateWord';
 import Day from './component/Day';
 import DayList from './component/DayList';
+import DeleteDay from './component/DeleteDay';
 import EmptyPage from './component/EmptyPage';
 import Header from './component/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/create_day">
             <CreateDay />
+          </Route>
+          <Route path="/delete_day">
+            <DeleteDay />
           </Route>
           <Route>
             <EmptyPage />
